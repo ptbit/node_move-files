@@ -41,37 +41,21 @@ try {
       : destination;
 
     if (fileName === destFilePath) {
-      console.error('Source and destination are the same');
+      // should do nothing if source and destination are the same
 
       return;
     }
 
     if (!destIsDir && !fs.existsSync(destination)) {
       // Destination is a new filename
-      fs.rename(fileName, destination, function (err2) {
-        if (err2) {
-          console.error(err2);
-
-          return;
-        }
-
-        console.log('File renamed successfully');
-      });
+      fs.rename(fileName, destination);
 
       return;
     }
 
     if (!destIsDir && !path.extname(destination)) {
       // Destination is a file without extension
-      fs.rename(fileName, destination, function (err3) {
-        if (err3) {
-          console.error(err3);
-
-          return;
-        }
-
-        console.log('File moved successfully');
-      });
+      fs.rename(fileName, destination);
 
       return;
     }
