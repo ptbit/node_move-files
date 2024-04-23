@@ -64,44 +64,44 @@ describe('File Move Tests', () => {
       expect(stderr.length).toBeGreaterThan(0);
     });
 
-    // test('should rename a file, if destination is a new filename', async () => {
-    //   const newFilePath = path.join(tempDir, faker.lorem.word());
+    test('should rename a file, if destination is a new filename', async () => {
+      const newFilePath = path.join(tempDir, faker.lorem.word());
 
-    //   const { stderr } = await execAsync(
-    //     `${basePath} ${testFilePath} ${newFilePath}`,
-    //   );
+      const { stderr } = await execAsync(
+        `${basePath} ${testFilePath} ${newFilePath}`,
+      );
 
-    //   expect(stderr).toBeFalsy();
+      expect(stderr).toBeFalsy();
 
-    //   const content = fs.readFileSync(newFilePath, 'utf-8');
+      const content = fs.readFileSync(newFilePath, 'utf-8');
 
-    //   expect(fs.existsSync(newFilePath)).toBe(true);
-    //   expect(fs.existsSync(testFilePath)).toBe(false);
-    //   expect(content).toBe(testContent);
-    // });
+      expect(fs.existsSync(newFilePath)).toBe(true);
+      expect(fs.existsSync(testFilePath)).toBe(false);
+      expect(content).toBe(testContent);
+    });
 
-    // test('should do nothing if source and destination are the same', async () => {
-    //   const { stderr } = await execAsync(
-    //     `${basePath} ${testFilePath} ${testFilePath}`,
-    //   );
+    test('should do nothing if source and destination are the same', async () => {
+      const { stderr } = await execAsync(
+        `${basePath} ${testFilePath} ${testFilePath}`,
+      );
 
-    //   const content = fs.readFileSync(testFilePath, 'utf-8');
+      const content = fs.readFileSync(testFilePath, 'utf-8');
 
-    //   expect(stderr).toBeFalsy();
-    //   expect(fs.existsSync(testFilePath)).toBe(true);
-    //   expect(content).toBe(testContent);
-    // });
+      expect(stderr).toBeFalsy();
+      expect(fs.existsSync(testFilePath)).toBe(true);
+      expect(content).toBe(testContent);
+    });
 
-    // test('should move file, if passed destination is a file without extension', async () => {
-    //   const newFilePath = path.join(tempDir, faker.lorem.word());
-    //   const { stderr } = await execAsync(
-    //     `${basePath} ${testFilePath} ${newFilePath}`,
-    //   );
+    test('should move file, if passed destination is a file without extension', async () => {
+      const newFilePath = path.join(tempDir, faker.lorem.word());
+      const { stderr } = await execAsync(
+        `${basePath} ${testFilePath} ${newFilePath}`,
+      );
 
-    //   expect(stderr).toBeFalsy();
-    //   expect(fs.existsSync(newFilePath)).toBe(true);
-    //   expect(fs.existsSync(testFilePath)).toBe(false);
-    // });
+      expect(stderr).toBeFalsy();
+      expect(fs.existsSync(newFilePath)).toBe(true);
+      expect(fs.existsSync(testFilePath)).toBe(false);
+    });
 
     test('should move file, if passed destination is a directory', async () => {
       fs.mkdirSync(testDir);
